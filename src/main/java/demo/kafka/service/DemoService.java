@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class DemoService {;
+public class DemoService {
 
     @Autowired
-    private KafkaClient kafkaClient;
+    private final KafkaClient kafkaClient;
 
     public void process(String key, DemoInboundEvent event) {
         kafkaClient.sendMessage(key, event.getData());

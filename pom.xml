@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>demo.kafka</groupId>
 	<artifactId>kafka-springboot-consume-produce</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>kafka-springboot-consume-produce</name>
 	<description>Demo Kafka Spring Boot Consumer and Producer</description>
 	<properties>

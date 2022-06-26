@@ -1,8 +1,7 @@
 package demo.kafka.lib;
 
-import java.util.UUID;
-
 import demo.kafka.properties.KafkaDemoProperties;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
@@ -13,21 +12,18 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class KafkaClient {
     @Autowired
-    private KafkaDemoProperties properties;
+    private final KafkaDemoProperties properties;
 
     @Autowired
-    private KafkaTemplate kafkaTemplate;
-
-    public static final String EVENT_ID_HEADER_KEY = "demo_eventIdHeader";
+    private final KafkaTemplate kafkaTemplate;
 
     public SendResult sendMessage(String key, String data) {
         try {
-            String payload = "eventId: " + UUID.randomUUID() + ", payload: " + data;
-            final ProducerRecord<String, String> record =
-                    new ProducerRecord<>(properties.getOutboundTopic(), key, payload);
-
+            String payload = "payload: " + data;
+            final ProducerRecord<String, String> record = new ProducerRecord<>(properties.getOutboundTopic(), key, payload);
             final SendResult result = (SendResult) kafkaTemplate.send(record).get();
             final RecordMetadata metadata = result.getRecordMetadata();
 
@@ -36,8 +32,9 @@ public class KafkaClient {
 
             return result;
         } catch (Exception e) {
-            log.error("Error sending message to topic " + properties.getOutboundTopic(), e);
-            throw new RuntimeException(e);
+            String message = "Error sending message to topic " + properties.getOutboundTopic();
+            log.error(message);
+            throw new RuntimeException(message, e);
         }
     }
 }
