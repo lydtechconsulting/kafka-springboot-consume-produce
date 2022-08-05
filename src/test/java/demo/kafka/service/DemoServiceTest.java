@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static java.util.UUID.randomUUID;
+import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -32,6 +34,6 @@ public class DemoServiceTest {
 
         service.process(key, testEvent);
 
-        verify(mockKafkaClient, times(1)).sendMessage(key, testEvent.getData());
+        verify(mockKafkaClient, times(1)).sendMessage(eq(key), argThat(s -> s.contains(testEvent.getData())));
     }
 }

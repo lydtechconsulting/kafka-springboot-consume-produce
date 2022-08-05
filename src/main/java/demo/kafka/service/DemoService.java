@@ -1,7 +1,11 @@
 package demo.kafka.service;
 
+import java.util.UUID;
+
 import demo.kafka.event.DemoInboundEvent;
+import demo.kafka.event.DemoOutboundEvent;
 import demo.kafka.lib.KafkaClient;
+import demo.kafka.mapper.JsonMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,10 @@ public class DemoService {
     private final KafkaClient kafkaClient;
 
     public void process(String key, DemoInboundEvent event) {
-        kafkaClient.sendMessage(key, event.getData());
+        DemoOutboundEvent outboundEvent = DemoOutboundEvent.builder()
+                .id(UUID.randomUUID().toString())
+                .data(event.getData())
+                .build();
+        kafkaClient.sendMessage(key, JsonMapper.writeToJson(outboundEvent));
     }
 }
