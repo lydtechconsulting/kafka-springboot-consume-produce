@@ -28,9 +28,6 @@ public class EndToEndCT {
 
     private Consumer consumer;
 
-    /**
-     * Configure the wiremock to return a 503 twice times before success.
-     */
     @BeforeEach
     public void setup() {
         consumer = KafkaClient.getInstance().createConsumer(GROUP_ID, "demo-outbound-topic");
