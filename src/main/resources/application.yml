@@ -5,5 +5,8 @@ spring:
 server:
     port: 9001
 
+kafka:
+    bootstrap-servers: localhost:9092
+
 kafkademo:
     outboundTopic : "demo-outbound-topic"

@@ -27,7 +27,7 @@ public class KafkaClient {
             final SendResult result = (SendResult) kafkaTemplate.send(record).get();
             final RecordMetadata metadata = result.getRecordMetadata();
 
-            log.debug(String.format("Sent record(key=%s value=%s) meta(topic=%s, partition=%d, offset=%d)",
+            log.info(String.format("Sent record(key=%s value=%s) meta(topic=%s, partition=%d, offset=%d)",
                     record.key(), record.value(), metadata.topic(), metadata.partition(), metadata.offset()));
 
             return result;

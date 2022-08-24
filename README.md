@@ -2,6 +2,75 @@
 
 Spring Boot application demonstrating usage of Kafka consumers and producers.
 
+This repo accompanies the following series of articles on Kafka Consume & Produce: 
+
+- [Kafka Consume & Produce: Spring Boot Demo](https://medium.com/lydtech-consulting/kafka-consume-produce-spring-boot-demo-e28fbe996b2a) 
+- [Kafka Consume & Produce: Testing](https://medium.com/lydtech-consulting/kafka-consume-produce-testing-84f002619f5f)
+
+## Build
+```
+mvn clean install
+```
+
+## Run Spring Boot Application
+
+### Run docker containers
+
+From root dir run the following to start dockerised Kafka and Zookeeper:
+```
+docker-compose up -d
+```
+
+### Start demo spring boot application
+```
+java -jar target/kafka-springboot-consume-produce-1.0.0.jar
+```
+
+### Produce a send-payment command event:
+
+Jump onto Kafka docker container:
+```
+docker exec -ti kafka bash
+```
+
+Produce a demo-inbound message:
+```
+kafka-console-producer \
+--topic demo-inbound-topic \
+--broker-list kafka:29092 \
+--property "key.separator=:" \
+--property parse.key=true
+```
+Now enter the message (with key prefix):
+```
+"my-key":{"id": "123-abc", "data": "my-data"}
+```
+The demo-inbound message is consumed by the application, which emits a resulting demo-outbound message.
+
+Check for the emitted demo-outbound message:
+```
+kafka-console-consumer \
+--topic demo-outbound-topic \
+--bootstrap-server kafka:29092 \
+--from-beginning
+```
+Output:
+```
+payload: {"id":"a210c3f0-a2e9-4d0d-8928-9c20549bbbd8","data":"my-data"}
+```
+
+### View topics
+
+Jump on to Kafka docker container:
+```
+docker exec -ti kafka bash
+```
+
+List topics:
+```
+kafka-topics --list --bootstrap-server localhost:9092
+```
+
 ## Integration Tests
 
 Run integration tests with `mvn clean test`
@@ -37,4 +106,9 @@ mvn test -Pcomponent -Dcontainers.stayup
 Manual clean up (if left containers up):
 ```
 docker rm -f $(docker ps -aq)
+```
+
+Further docker clean up if network issues:
+```
+docker network prune
 ```
