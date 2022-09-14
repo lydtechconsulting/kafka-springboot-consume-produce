@@ -16,7 +16,7 @@ mvn clean install
 
 ### Run docker containers
 
-From root dir run the following to start dockerised Kafka and Zookeeper:
+From root dir run the following to start dockerised Kafka, Zookeeper, and Confluent Control Center:
 ```
 docker-compose up -d
 ```
@@ -59,7 +59,18 @@ Output:
 payload: {"id":"a210c3f0-a2e9-4d0d-8928-9c20549bbbd8","data":"my-data"}
 ```
 
-### View topics
+### Kafka Confluent Control Center
+
+Confluent Control Center is a UI over the Kafka cluster, providing a view of the configuration, data and information on the brokers, topics and messages.
+
+Navigate to the Control Center:
+```
+http://localhost:9021
+```
+
+### Command Line Tools
+
+#### View topics
 
 Jump on to Kafka docker container:
 ```
