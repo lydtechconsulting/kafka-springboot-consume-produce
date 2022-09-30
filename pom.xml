@@ -90,7 +90,7 @@
 		<dependency>
 			<groupId>dev.lydtech</groupId>
 			<artifactId>component-test-framework</artifactId>
-			<version>1.7.0-SNAPSHOT</version>
+			<version>conduktor-jmx</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -141,7 +141,13 @@
 								<service.instance.count>1</service.instance.count>
 								<service.container.logging.enabled>false</service.container.logging.enabled>
 								<kafka.enabled>true</kafka.enabled>
+								<kafka.confluent.image.tag>6.2.4</kafka.confluent.image.tag>
 								<kafka.container.logging.enabled>false</kafka.container.logging.enabled>
+
+								<conduktor.enabled>false</conduktor.enabled>
+								<conduktor.image.tag>1.0.2</conduktor.image.tag>
+								<conduktor.port>8088</conduktor.port>
+								<conduktor.container.logging.enabled>false</conduktor.container.logging.enabled>
 							</systemPropertyVariables>
 						</configuration>
 					</plugin>
