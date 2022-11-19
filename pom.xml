@@ -90,7 +90,7 @@
 		<dependency>
 			<groupId>dev.lydtech</groupId>
 			<artifactId>component-test-framework</artifactId>
-			<version>1.7.0-SNAPSHOT</version>
+			<version>1.11.0</version>
 			<scope>test</scope>
 		</dependency>
 
