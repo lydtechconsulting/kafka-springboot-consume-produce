@@ -26,7 +26,7 @@ docker-compose up -d
 java -jar target/kafka-springboot-consume-produce-1.0.0.jar
 ```
 
-### Produce a send-payment command event:
+### Produce an inbound event:
 
 Jump onto Kafka docker container:
 ```
