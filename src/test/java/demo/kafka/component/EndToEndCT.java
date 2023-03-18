@@ -1,6 +1,5 @@
 package demo.kafka.component;
 
-import java.time.Duration;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,17 +29,13 @@ public class EndToEndCT {
 
     @BeforeEach
     public void setup() {
-        consumer = KafkaClient.getInstance().createConsumer(GROUP_ID, "demo-outbound-topic");
-
-        // Clear the topic.
-        consumer.poll(Duration.ofSeconds(1));
+        consumer = KafkaClient.getInstance().initConsumer(GROUP_ID, "demo-outbound-topic", 3L);
     }
 
     @AfterEach
     public void tearDown() {
         consumer.close();
     }
-
 
     /**
      * Send in multiple events and ensure an outbound event is emitted for each.

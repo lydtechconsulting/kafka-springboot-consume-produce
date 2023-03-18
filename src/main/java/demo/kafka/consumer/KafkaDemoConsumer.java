@@ -22,7 +22,7 @@ public class KafkaDemoConsumer {
     final DemoService demoService;
 
     @KafkaListener(topics = "demo-inbound-topic", groupId = "demo-consumer-group", containerFactory = "kafkaListenerContainerFactory")
-    public void listen(@Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key, @Payload final String payload) {
+    public void listen(@Header(KafkaHeaders.RECEIVED_KEY) String key, @Payload final String payload) {
         counter.getAndIncrement();
         log.info("Received message [" +counter.get()+ "] - key: " + key + " - payload: " + payload);
         try {

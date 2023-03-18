@@ -8,6 +8,9 @@ This repo accompanies the following series of articles on Kafka Consume & Produc
 - [Kafka Consume & Produce: Testing](https://medium.com/lydtech-consulting/kafka-consume-produce-testing-84f002619f5f)
 
 ## Build
+
+With Java version 17:
+
 ```
 mvn clean install
 ```
@@ -119,7 +122,8 @@ Manual clean up (if left containers up):
 docker rm -f $(docker ps -aq)
 ```
 
-Further docker clean up if network issues:
+Further docker clean up if network/other issues:
 ```
-docker network prune
+docker system prune
+docker volume prune
 ```

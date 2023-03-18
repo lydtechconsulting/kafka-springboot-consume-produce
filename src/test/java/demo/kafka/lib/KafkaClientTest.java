@@ -1,6 +1,6 @@
 package demo.kafka.lib;
 
-
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 import demo.kafka.properties.KafkaDemoProperties;
@@ -11,7 +11,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
-import org.springframework.util.concurrent.ListenableFuture;
 
 import static java.util.UUID.randomUUID;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -49,7 +48,7 @@ public class KafkaClientTest {
         final ProducerRecord<String, String> expectedRecord = new ProducerRecord<>(topic, key, "payload: " + data);
 
         when(propertiesMock.getOutboundTopic()).thenReturn(topic);
-        ListenableFuture futureResult = mock(ListenableFuture.class);
+        CompletableFuture futureResult = mock(CompletableFuture.class);
         SendResult expectedSendResult = mock(SendResult.class);
         RecordMetadata metadata = new RecordMetadata(new TopicPartition(topic,0),0,0,0,Long.valueOf(0),0, 0);
         when(futureResult.get()).thenReturn(expectedSendResult);
@@ -74,7 +73,7 @@ public class KafkaClientTest {
         final ProducerRecord<String, String> expectedRecord = new ProducerRecord<>(topic, key, "payload: " + data);
 
         when(propertiesMock.getOutboundTopic()).thenReturn(topic);
-        ListenableFuture futureResult = mock(ListenableFuture.class);
+        CompletableFuture futureResult = mock(CompletableFuture.class);
         SendResult expectedSendResult = mock(SendResult.class);
         RecordMetadata metadata = new RecordMetadata(new TopicPartition(topic,0),0,0,0,Long.valueOf(0),0, 0);
         when(futureResult.get()).thenReturn(expectedSendResult);
