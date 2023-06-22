@@ -124,6 +124,7 @@ docker rm -f $(docker ps -aq)
 
 Further docker clean up if network/other issues:
 ```
+docker network prune
 docker system prune
 docker volume prune
 ```

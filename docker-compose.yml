@@ -44,3 +44,14 @@ services:
             CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
             CONFLUENT_METRICS_TOPIC_REPLICATION: 1
             PORT: 9021
+
+    conduktor-gateway:
+        image: conduktor/conduktor-gateway:local
+        hostname: conduktor-gateway
+        container_name: conduktor-gateway
+        depends_on:
+            - kafka
+        ports:
+            - "8089:8089"
+        environment:
+            PORT: 8089
