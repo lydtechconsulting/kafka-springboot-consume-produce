@@ -114,7 +114,7 @@ mvn test -Pcomponent
 
 Run tests leaving containers up:
 ```
-
+mvn test -Pcomponent -Dcontainers.stayup
 ```
 
 Manual clean up (if left containers up):
