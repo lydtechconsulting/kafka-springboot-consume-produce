@@ -6,7 +6,7 @@ server:
     port: 9001
 
 kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: localhost:6969
 
 kafkademo:
     outboundTopic : "demo-outbound-topic"

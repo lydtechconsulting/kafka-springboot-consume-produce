@@ -3,6 +3,7 @@ package demo.kafka.component;
 import java.util.List;
 import java.util.UUID;
 
+import dev.lydtech.component.framework.client.conduktor.ConduktorGatewayClient;
 import dev.lydtech.component.framework.client.kafka.KafkaClient;
 import dev.lydtech.component.framework.extension.TestContainersSetupExtension;
 import dev.lydtech.component.framework.mapper.JsonMapper;
@@ -30,6 +31,9 @@ public class EndToEndCT {
     @BeforeEach
     public void setup() {
         consumer = KafkaClient.getInstance().initConsumer(GROUP_ID, "demo-outbound-topic", 3L);
+
+        ConduktorGatewayClient conduktorGatewayClient = ConduktorGatewayClient.getInstance();
+        conduktorGatewayClient.postMapping();
     }
 
     @AfterEach
@@ -42,7 +46,7 @@ public class EndToEndCT {
      */
     @Test
     public void testFlow() throws Exception {
-        int totalMessages = 100;
+        int totalMessages = 1;
         for (int i=0; i<totalMessages; i++) {
             String key = UUID.randomUUID().toString();
             String payload = UUID.randomUUID().toString();

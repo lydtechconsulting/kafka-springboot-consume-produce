@@ -26,7 +26,7 @@ docker-compose up -d
 
 ### Start demo spring boot application
 ```
-java -jar target/kafka-springboot-consume-produce-1.0.0.jar
+java -jar target/kafka-springboot-consume-produce-2.0.0.jar
 ```
 
 ### Produce an inbound event:
@@ -114,7 +114,7 @@ mvn test -Pcomponent
 
 Run tests leaving containers up:
 ```
-mvn test -Pcomponent -Dcontainers.stayup
+
 ```
 
 Manual clean up (if left containers up):

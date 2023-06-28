@@ -1,12 +1,12 @@
 ---
 kafka:
-    bootstrap-servers: conduktor_gateway:6969
+    bootstrap-servers: conduktorgateway:6969
 
-interceptors:
-    - name: loggingInterceptor
-      pluginClass: io.conduktor.example.loggerinterceptor.LoggerInterceptorPlugin
-      timeoutMs: 30000 #optional, default timeoutMs = 30s
-      priority: 100
-      config:
-          - key: "loggingStyle"
-            value: "obiWan"
+#interceptors:
+#    - name: loggingInterceptor
+#      pluginClass: io.conduktor.example.loggerinterceptor.LoggerInterceptorPlugin
+#      timeoutMs: 30000 #optional, default timeoutMs = 30s
+#      priority: 100
+#      config:
+#          - key: "loggingStyle"
+#            value: "obiWan"
