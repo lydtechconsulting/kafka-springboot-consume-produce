@@ -4,8 +4,9 @@ Spring Boot application demonstrating usage of Kafka consumers and producers.
 
 This repo accompanies the following series of articles on Kafka Consume & Produce: 
 
-- [Kafka Consume & Produce: Spring Boot Demo](https://medium.com/lydtech-consulting/kafka-consume-produce-spring-boot-demo-e28fbe996b2a) 
-- [Kafka Consume & Produce: Testing](https://medium.com/lydtech-consulting/kafka-consume-produce-testing-84f002619f5f)
+- [Kafka Consume & Produce: Spring Boot Demo](https://www.lydtechconsulting.com/blog-kafka-consume-produce-demo.html) 
+- [Kafka Consume & Produce: Testing](https://www.lydtechconsulting.com/blog-kafka-consume-produce-testing.html)
+- [Kafka Consume & Produce: At-Least-Once Delivery](https://www.lydtechconsulting.com/blog-kafka-consume-produce-at-least-once.html)
 
 ## Build
 
