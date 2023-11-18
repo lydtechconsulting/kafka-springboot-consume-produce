@@ -27,19 +27,14 @@ docker-compose up -d
 
 ### Start demo spring boot application
 ```
-java -jar target/kafka-springboot-consume-produce-2.0.0.jar
+java -jar target/kafka-springboot-consume-produce-2.1.0.jar
 ```
 
 ### Produce an inbound event:
 
-Jump onto Kafka docker container:
+Jump onto the Kafka docker container and produce a demo-inbound message:
 ```
-docker exec -ti kafka bash
-```
-
-Produce a demo-inbound message:
-```
-kafka-console-producer \
+docker exec -ti kafka kafka-console-producer \
 --topic demo-inbound-topic \
 --broker-list kafka:29092 \
 --property "key.separator=:" \
@@ -53,7 +48,7 @@ The demo-inbound message is consumed by the application, which emits a resulting
 
 Check for the emitted demo-outbound message:
 ```
-kafka-console-consumer \
+docker exec -ti kafka kafka-console-consumer \
 --topic demo-outbound-topic \
 --bootstrap-server kafka:29092 \
 --from-beginning
@@ -76,14 +71,9 @@ http://localhost:9021
 
 #### View topics
 
-Jump on to Kafka docker container:
-```
-docker exec -ti kafka bash
-```
-
 List topics:
 ```
-kafka-topics --list --bootstrap-server localhost:9092
+docker exec -ti kafka kafka-topics --list --bootstrap-server localhost:9092
 ```
 
 ## Integration Tests

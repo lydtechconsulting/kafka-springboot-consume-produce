@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.1.0] - 2023-11-18
+### Updated
+- Supports Component Test Framework 2.6, Testcontainers 1.19, Spring Boot 3.1.
+
 ## [2.0.0] - 2023-03-30
 ### Updated
 - Supports Spring Boot 3, Kafka Clients 3, Java 17.

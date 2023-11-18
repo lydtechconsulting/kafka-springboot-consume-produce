@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import dev.lydtech.component.framework.client.kafka.KafkaClient;
-import dev.lydtech.component.framework.extension.TestContainersSetupExtension;
+import dev.lydtech.component.framework.extension.ComponentTestExtension;
 import dev.lydtech.component.framework.mapper.JsonMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.Consumer;
@@ -20,7 +20,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
 @Slf4j
-@ExtendWith(TestContainersSetupExtension.class)
+@ExtendWith(ComponentTestExtension.class)
 public class EndToEndCT {
 
     private static final String GROUP_ID = "EndToEndCT";
