@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.0] - 2024-07-09
+### Updated
+- Supports Component Test Framework 3.4.
+### Added
+- Demonstrates Conduktor 1.23
+
 ## [2.1.0] - 2023-11-18
 ### Updated
 - Supports Component Test Framework 2.6, Testcontainers 1.19, Spring Boot 3.1.

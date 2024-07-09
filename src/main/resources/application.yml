@@ -3,7 +3,7 @@ spring:
         name: kafka-demo
 
 server:
-    port: 9001
+    port: 8080
 
 kafka:
     bootstrap-servers: localhost:9092

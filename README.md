@@ -67,6 +67,17 @@ Navigate to the Control Center:
 http://localhost:9021
 ```
 
+### Conduktor Console
+
+Conduktor is a UI over the Kafka cluster, providing a view of the configuration, data and information on the brokers, topics and messages.
+
+Navigate to Conduktor:
+```
+http://localhost:8088
+```
+
+Login with `admin@conduktor.io` / `password`
+
 ### Command Line Tools
 
 #### View topics
@@ -85,6 +96,8 @@ The tests demonstrate sending events to an embedded in-memory Kafka that are con
 ## Component Tests
 
 The tests demonstrate sending events to a dockerised Kafka that are consumed by the dockerised application, resulting in outbound events being published.
+
+Confluent Control Center and/or Conduktor can be enabled in the `pom.xml` to run during the component tests.  Leave the containers up between test runs to inspect the topics and messages created by the tests, by navigating to the URLs above.
 
 For more on the component tests see: https://github.com/lydtechconsulting/component-test-framework
 

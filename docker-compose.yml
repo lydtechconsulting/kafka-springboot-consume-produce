@@ -44,3 +44,29 @@ services:
             CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
             CONFLUENT_METRICS_TOPIC_REPLICATION: 1
             PORT: 9021
+
+    postgresql:
+        image: postgres:14
+        hostname: postgresql
+        environment:
+            POSTGRES_DB: "conduktor-console"
+            POSTGRES_USER: "conduktor"
+            POSTGRES_PASSWORD: "password"
+            POSTGRES_HOST_AUTH_METHOD: "scram-sha-256"
+
+    conduktor-console:
+        image: conduktor/conduktor-console:1.24.1
+        depends_on:
+            - postgresql
+        ports:
+            - "8088:8080"
+        environment:
+            CDK_CLUSTERS_0_ID: 'local'
+            CDK_CLUSTERS_0_NAME: 'Local Kafka Cluster'
+            CDK_CLUSTERS_0_BOOTSTRAPSERVERS: 'kafka:29092'
+            CDK_DATABASE_URL: "postgresql://conduktor:password@postgresql:5432/conduktor-console"
+            CDK_ADMIN_EMAIL: 'admin@conduktor.io'
+            CDK_ADMIN_PASSWORD: 'password'
+            CDK_AUTH_LOCAL-USERS_0_EMAIL: 'user@conduktor.io'
+            CDK_AUTH_LOCAL-USERS_0_PASSWORD: 'password'
+
