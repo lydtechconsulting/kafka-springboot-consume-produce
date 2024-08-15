@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.0] - 2024-08-15
+### Updated
+- Supports Component Test Framework 3.5.
+### Added
+- Demonstrates component testing with Kafka native.
+
 ## [2.2.0] - 2024-07-09
 ### Updated
 - Supports Component Test Framework 3.4.

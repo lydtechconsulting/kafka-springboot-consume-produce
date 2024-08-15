@@ -1,3 +1,6 @@
 ---
 kafka:
+    # Standard
     bootstrap-servers: kafka:9092
+    # Native
+    #bootstrap-servers: kafka:9093

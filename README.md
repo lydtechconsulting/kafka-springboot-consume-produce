@@ -99,6 +99,8 @@ The tests demonstrate sending events to a dockerised Kafka that are consumed by 
 
 Confluent Control Center and/or Conduktor can be enabled in the `pom.xml` to run during the component tests.  Leave the containers up between test runs to inspect the topics and messages created by the tests, by navigating to the URLs above.
 
+To test the application running against the Apache Kafka native instance, set `kafka.enabled` to `false` and `kafka.native.enabled` to `true` in the `pom.xml`.  Change the `bootstrap-servers` to use `kafka:9093` in `application-component-test.yml`.
+
 For more on the component tests see: https://github.com/lydtechconsulting/component-test-framework
 
 Build Spring Boot application jar:
