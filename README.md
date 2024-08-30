@@ -2,6 +2,8 @@
 
 Spring Boot application demonstrating usage of Kafka consumers and producers.
 
+![Spring Boot application with Kafka](resources/kafka-consume-and-produce.png)
+
 This repo accompanies the following series of articles on Kafka Consume & Produce: 
 
 - [Kafka Consume & Produce: Spring Boot Demo](https://www.lydtechconsulting.com/blog-kafka-consume-produce-demo.html) 
