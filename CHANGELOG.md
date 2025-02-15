@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.4.0] - 2025-02-15
+### Updated
+- Updated component-test-framework to 3.9.0.
+- Define the configuration in a yml file.
+
 ## [2.3.0] - 2024-08-15
 ### Updated
 - Supports Component Test Framework 3.5.

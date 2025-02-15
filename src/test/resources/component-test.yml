@@ -1,0 +1,24 @@
+service:
+    name: kafka-springboot-consume-produce
+    port: 8080
+    instance:
+        count: 3
+    container:
+        logging:
+            enabled: false
+
+kafka:
+    enabled: true
+    native:
+        enabled: false
+    topics: demo-inbound-topic,demo-outbound-topic
+    control:
+        center:
+            enabled: false
+    broker:
+        count: 1
+
+conduktor:
+    enabled: false
+    gateway:
+        enabled: false
