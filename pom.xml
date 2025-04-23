@@ -74,7 +74,7 @@
 		<dependency>
 			<groupId>dev.lydtech</groupId>
 			<artifactId>component-test-framework</artifactId>
-			<version>3.9.0</version>
+			<version>3.9.2</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -97,6 +97,22 @@
 	<profiles>
 		<profile>
 			<id>component</id>
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.httpcomponents.client5</groupId>
+						<artifactId>httpclient5</artifactId>
+						<version>5.4.3</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.httpcomponents.core5</groupId>
+						<artifactId>httpcore5</artifactId>
+						<version>5.3.4</version>
+						<scope>test</scope>
+					</dependency>
+				</dependencies>
+			</dependencyManagement>
 			<build>
 				<plugins>
 					<plugin>
