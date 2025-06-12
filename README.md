@@ -29,8 +29,9 @@ docker-compose up -d
 
 ### Start demo spring boot application
 ```
-java -jar target/kafka-springboot-consume-produce-2.3.0.jar
+java -jar target/kafka-springboot-consume-produce-2.4.0.jar
 ```
+(Check latest version in pom.xml).
 
 ### Produce an inbound event:
 
