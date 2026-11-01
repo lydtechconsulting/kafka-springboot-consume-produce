@@ -47,13 +47,10 @@ public class KafkaClientTest {
 
         final ProducerRecord<String, String> expectedRecord = new ProducerRecord<>(topic, key, "payload: " + data);
 
-        when(propertiesMock.getOutboundTopic()).thenReturn(topic);
         CompletableFuture futureResult = mock(CompletableFuture.class);
         SendResult expectedSendResult = mock(SendResult.class);
         RecordMetadata metadata = new RecordMetadata(new TopicPartition(topic,0),0,0,0,Long.valueOf(0),0, 0);
-        when(futureResult.get()).thenReturn(expectedSendResult);
-        when(expectedSendResult.getRecordMetadata()).thenReturn(metadata);
-        when(kafkaTemplateMock.send(any(ProducerRecord.class))).thenReturn(futureResult);
+        setupCompletableFutureGetAndSendAndGetOutboundTopicAnd1MoreStubs(topic, futureResult, expectedSendResult, metadata);
 
         SendResult result = kafkaClient.sendMessage(key, data);
 
@@ -72,13 +69,10 @@ public class KafkaClientTest {
 
         final ProducerRecord<String, String> expectedRecord = new ProducerRecord<>(topic, key, "payload: " + data);
 
-        when(propertiesMock.getOutboundTopic()).thenReturn(topic);
         CompletableFuture futureResult = mock(CompletableFuture.class);
         SendResult expectedSendResult = mock(SendResult.class);
         RecordMetadata metadata = new RecordMetadata(new TopicPartition(topic,0),0,0,0,Long.valueOf(0),0, 0);
-        when(futureResult.get()).thenReturn(expectedSendResult);
-        when(expectedSendResult.getRecordMetadata()).thenReturn(metadata);
-        when(kafkaTemplateMock.send(any(ProducerRecord.class))).thenReturn(futureResult);
+        setupCompletableFutureGetAndSendAndGetOutboundTopicAnd1MoreStubs(topic, futureResult, expectedSendResult, metadata);
 
         doThrow(new ExecutionException("Kafka send failure", new Exception("Failed"))).when(futureResult).get();
 
@@ -88,5 +82,12 @@ public class KafkaClientTest {
 
         verify(kafkaTemplateMock, times(1)).send(expectedRecord);
         assertThat(exception.getMessage(), equalTo("Error sending message to topic " + topic));
+    }
+
+    private void setupCompletableFutureGetAndSendAndGetOutboundTopicAnd1MoreStubs(String topic, CompletableFuture futureResult, SendResult expectedSendResult, RecordMetadata metadata) throws Exception {
+        when(propertiesMock.getOutboundTopic()).thenReturn(topic);
+        when(futureResult.get()).thenReturn(expectedSendResult);
+        when(expectedSendResult.getRecordMetadata()).thenReturn(metadata);
+        when(kafkaTemplateMock.send(any(ProducerRecord.class))).thenReturn(futureResult);
     }
 }
